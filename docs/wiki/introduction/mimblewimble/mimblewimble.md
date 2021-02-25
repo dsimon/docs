@@ -22,7 +22,7 @@ Going next, we'll examine how those two fundemental properties are achieved.
 
 ### Amounts
 
-Building upon the ECC princple described above, we can obscure the values in a transaction.
+Building upon the ECC principle described above, we can obscure the values in a transaction.
 
 If `v` is the amount value of an input or output and **H** is a generator point on the elliptic curve, we can simply embed `v*H` instead of `v` in a transaction. This works because using the ECC operations, we can validate that the sum of values in outputs, equals to the sum of values in inputs. If we subtract those sums (outputs minus inputs), the result would be 0.
 
