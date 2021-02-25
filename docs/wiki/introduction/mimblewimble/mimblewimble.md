@@ -136,7 +136,7 @@ This can be verified by requiring the transactors to build a (schnorr) signature
 * The transacting parties can collectively produce the excess value (it is the private key of their joint signature).
 * The sum of the outputs minus the inputs is 0, because only a valid public key for G will check out against the signature.
 
-This signature, along with a commitment to the excess value (86*G, which serves as a public key to verify the signature), is called a transcation kernel.
+This signature, along with a commitment to the excess value (86*G, which serves as a public key to verify the signature), is called a transaction kernel.
 
 #### Change
 
@@ -159,7 +159,7 @@ The joint signature is again built with the excess value, `99` in this example.
 
 ### Rangeproofs
 
-Previously, we assumed output values to always be positive. However, by introducing negative amounts, a transcation could be balanced out, for example, with an input of `2` and outputs of `5` and `-3`. This can't be detected as the values would still equal to zero.
+Previously, we assumed output values to always be positive. However, by introducing negative amounts, a transaction could be balanced out, for example, with an input of `2` and outputs of `5` and `-3`. This can't be detected as the values would still equal to zero.
 
 A rangeproof is therefore attached to every output and proves that its value isn't negative and that its size is restricted so it doesn't overflow. We won't elaborate on this here.
 
@@ -199,7 +199,7 @@ The Mimblewimble block format builds on this by introducing two additional conce
 
 While the kernel excess of a transaction can be computed by anyone, there's major benefit in including it in every transaction's kernel, as it allows for aggregation within blocks.
 
-The following is true for any valid transcation (ignoring fees):
+The following is true for any valid transaction (ignoring fees):
 
 ```text
 transaction:
@@ -224,14 +224,14 @@ Similarly, transactions could be aggregated before block construction and thus e
 
 There is a subtle problem with Mimblewimble blocks and transactions as described above, that needs to be addressed. Given a set of inputs, outputs and transaction kernels, a subset of these will combine to reconstruct a valid transaction.
 
-Consider the two following transcations:
+Consider the two following transactions:
 
 ```text linenums="1"
 (in1, in2) -> (out1)        |  (kern1)
      (in3) -> (out2, out3)  |  (kern2)
 ```
 
-We can aggregate them into a block (simply another transcation):
+We can aggregate them into a block (simply another transaction):
 
 :   *aggregated block/transaction*
 
